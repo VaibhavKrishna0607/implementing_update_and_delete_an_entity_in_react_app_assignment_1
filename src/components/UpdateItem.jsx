@@ -10,12 +10,12 @@ const UpdateItem = ({ item }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log("Form data on change:", formData); // Debugging
+    console.log("Form data on change:", formData); 
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting form data:", formData); // Debugging
+    console.log("Submitting form data:", formData);
 
     fetch(`http://${import.meta.env.VITE_API_URI}/doors/${item.id}`, {
       method: "PUT",
@@ -23,12 +23,12 @@ const UpdateItem = ({ item }) => {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        console.log("Update response status:", response.status); // Debugging
+        console.log("Update response status:", response.status); 
         if (!response.ok) throw new Error("Failed to update data");
         return response.json();
       })
       .then((data) => {
-        console.log("Update success:", data); // Debugging
+        console.log("Update success:", data); 
         setMessage("Item updated successfully!");
       })
       .catch((error) => setMessage(`Error updating item: ${error.message}`));

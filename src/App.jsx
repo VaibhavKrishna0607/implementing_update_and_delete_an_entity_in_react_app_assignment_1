@@ -7,20 +7,20 @@ function App() {
   const [item, setItem] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_URI}/1`) // Replace "1" with desired ID
+    fetch(`${API_URI}/1`) 
       .then((response) => {
-        console.log("Response status:", response.status); // Debugging
+        console.log("Response status:", response.status); 
         if (!response.ok) throw new Error("Failed to fetch data");
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched item:", data); // Debugging
+        console.log("Fetched item:", data); 
         setItem(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  return item ? <UpdateItem item={item} /> : <p>Loading...</p>;
+  return <UpdateItem item={item} />;
 }
 
 export default App;
